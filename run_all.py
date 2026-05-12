@@ -7,6 +7,7 @@ import os
 import sys
 import threading
 import time
+import traceback
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,16 +21,18 @@ if sys.platform == 'win32':
 
 
 def run_scanner_thread():
-    """Run scanner in background thread"""
+    """Run scanner in background thread with error recovery"""
     print("[Scanner] Starting scanner in background...")
-    try:
-        from scanner_v2 import ScannerV2
-        scanner = ScannerV2()
-        scanner.run()
-    except Exception as e:
-        print(f"[Scanner] Error: {e}")
-        import traceback
-        traceback.print_exc()
+    while True:
+        try:
+            from scanner_v2 import ScannerV2
+            scanner = ScannerV2()
+            scanner.run()
+        except Exception as e:
+            print(f"[Scanner] Error: {e}")
+            traceback.print_exc()
+            print("[Scanner] Restarting in 60 seconds...")
+            time.sleep(60)
 
 
 def main():
@@ -42,6 +45,9 @@ def main():
     scanner_thread = threading.Thread(target=run_scanner_thread, daemon=True)
     scanner_thread.start()
     print("[Main] Scanner started in background")
+
+    # Small delay to let scanner initialize
+    time.sleep(2)
 
     # Run dashboard in main thread
     print("[Main] Starting dashboard...")

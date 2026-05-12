@@ -10013,5 +10013,529 @@
     "timestamp": "2026-05-12T16:43:37.861372+00:00",
     "status": "active",
     "tp_hits": []
+  },
+  {
+    "signal": {
+      "symbol": "ETHUSDT",
+      "trade_type": "day_trading",
+      "strength": "GOLD",
+      "rating": {
+        "rank": "GOLD",
+        "emoji": "\ud83e\udd47",
+        "color": "#FFD700",
+        "priority": 2
+      },
+      "confidence": 88.0,
+      "tf_label": "TRUNG H\u1ea0N \u23f3",
+      "score": 78,
+      "direction": "short",
+      "entry_price": 2258.22,
+      "atr": 22.582199999999997,
+      "atr_pct": 1.0,
+      "leverage_info": {
+        "leverage": 10,
+        "risk_label": "TRUNG B\u00ccNH",
+        "detail": "10x (TRUNG B\u00ccNH)"
+      },
+      "regime": {
+        "regime": "trending_down",
+        "emoji": "\ud83d\udcc9",
+        "label": "Xu h\u01b0\u1edbng gi\u1ea3m",
+        "adx": 68.1,
+        "volatility": 0.19,
+        "trend_slope": -1.26,
+        "detail": "\ud83d\udcc9 Xu h\u01b0\u1edbng gi\u1ea3m"
+      },
+      "multi_tf_aligned": true,
+      "funding_rate": 3.956e-05,
+      "open_interest": 2256925.458,
+      "htf": {
+        "score": 44,
+        "direction": "short",
+        "details": [
+          "Consensus: 56% (4L/5S/3N)",
+          "Aligned score: 44",
+          "Consensus bonus: +0",
+          "Multi-TF bonus: +0",
+          "[=] ema: Price < EMA21 & EMA200",
+          "[-] supertrend: Supertrend UP",
+          "[+] adx: ADX:27.1 Strong Bearish",
+          "[+] rsi: RSI:32.8 Bearish",
+          "[+] macd: MACD Histogram Decreasing"
+        ],
+        "regime": {
+          "regime": "trending_down",
+          "emoji": "\ud83d\udcc9",
+          "label": "Xu h\u01b0\u1edbng gi\u1ea3m",
+          "adx": 27.1,
+          "volatility": 0.74,
+          "trend_slope": -2.56,
+          "detail": "\ud83d\udcc9 Xu h\u01b0\u1edbng gi\u1ea3m"
+        }
+      },
+      "mtf": {
+        "score": 66,
+        "direction": "short",
+        "details": [
+          "Consensus: 70% (3L/7S/2N)",
+          "Aligned score: 61",
+          "Consensus bonus: +5",
+          "Multi-TF bonus: +0",
+          "[+] ema: EMA Bearish Alignment | Price < EMA21 & EMA200",
+          "[+] supertrend: Supertrend DOWN",
+          "[+] adx: ADX:77.9 Strong Bearish",
+          "[-] rsi: RSI:11.7 Oversold",
+          "[+] macd: MACD Histogram Decreasing"
+        ],
+        "regime": {
+          "regime": "trending_down",
+          "emoji": "\ud83d\udcc9",
+          "label": "Xu h\u01b0\u1edbng gi\u1ea3m",
+          "adx": 77.9,
+          "volatility": 0.48,
+          "trend_slope": -3.51,
+          "detail": "\ud83d\udcc9 Xu h\u01b0\u1edbng gi\u1ea3m"
+        }
+      },
+      "ltf": {
+        "score": 58,
+        "direction": "short",
+        "details": [
+          "Consensus: 75% (2L/6S/4N)",
+          "Aligned score: 53",
+          "Consensus bonus: +5",
+          "Multi-TF bonus: +0",
+          "[+] ema: EMA Bearish Alignment | Price < EMA21 & EMA200",
+          "[-] supertrend: Supertrend UP",
+          "[+] adx: ADX:68.1 Strong Bearish",
+          "[+] rsi: RSI:33.4 Bearish",
+          "[+] macd: MACD Histogram Decreasing"
+        ],
+        "regime": {
+          "regime": "trending_down",
+          "emoji": "\ud83d\udcc9",
+          "label": "Xu h\u01b0\u1edbng gi\u1ea3m",
+          "adx": 68.1,
+          "volatility": 0.19,
+          "trend_slope": -1.26,
+          "detail": "\ud83d\udcc9 Xu h\u01b0\u1edbng gi\u1ea3m"
+        },
+        "rsi": 33.35,
+        "adx": 68.14,
+        "stoch": {
+          "k": 10.5,
+          "d": 23.3
+        },
+        "fib": {
+          "levels": {
+            "0.0": 2255.15,
+            "0.236": 2276.32628,
+            "0.382": 2289.42686,
+            "0.5": 2300.0150000000003,
+            "0.618": 2310.60314,
+            "0.786": 2325.67778,
+            "1.0": 2344.88
+          },
+          "extensions": {
+            "1.272": 2369.28656,
+            "1.618": 2400.33314,
+            "2.618": 2490.06314
+          },
+          "nearest_level": "0.0"
+        },
+        "candlestick": [],
+        "bb": {
+          "atr": 10.9936,
+          "atr_pct": 0.49,
+          "bb_upper": 2294.973,
+          "bb_middle": 2273.8615,
+          "bb_lower": 2252.75,
+          "bb_pct": 0.1296
+        },
+        "ema": {
+          "ema_9": 2265.341,
+          "ema_21": 2272.3147,
+          "ema_50": 2285.4899,
+          "ema_200": 2312.2615,
+          "cross_up": "False",
+          "cross_down": "False"
+        },
+        "structure": {
+          "bos_bullish": false,
+          "bos_bearish": true,
+          "choch_bullish": false,
+          "choch_bearish": false,
+          "trend": "downtrend",
+          "last_ph": 2294.09,
+          "last_pl": 2278.41
+        },
+        "smc": {
+          "order_blocks": [
+            {
+              "type": "bearish",
+              "high": 2273.57,
+              "low": 2265.5,
+              "index": 492
+            }
+          ],
+          "fvgs": [
+            {
+              "type": "bearish",
+              "top": 2285.04,
+              "bottom": 2284.3,
+              "index": 469
+            },
+            {
+              "type": "bullish",
+              "top": 2288.82,
+              "bottom": 2284.3,
+              "index": 471
+            },
+            {
+              "type": "bearish",
+              "top": 2290.47,
+              "bottom": 2289.52,
+              "index": 474
+            },
+            {
+              "type": "bearish",
+              "top": 2287.23,
+              "bottom": 2286.29,
+              "index": 475
+            },
+            {
+              "type": "bearish",
+              "top": 2286.92,
+              "bottom": 2284.45,
+              "index": 486
+            }
+          ]
+        }
+      },
+      "confluence_score": 15,
+      "consensus_pct": 75,
+      "long_count": 2,
+      "short_count": 6
+    },
+    "risk": {
+      "entry": 2258.22,
+      "sl": 2314.68,
+      "sl_pct": 2.5,
+      "tps": [
+        {
+          "level": 1,
+          "price": 2173.54,
+          "rr_ratio": 1.5,
+          "close_pct": 25,
+          "profit": 84.68
+        },
+        {
+          "level": 2,
+          "price": 2117.08,
+          "rr_ratio": 2.5,
+          "close_pct": 25,
+          "profit": 141.14
+        },
+        {
+          "level": 3,
+          "price": 2060.63,
+          "rr_ratio": 3.5,
+          "close_pct": 20,
+          "profit": 197.59
+        },
+        {
+          "level": 4,
+          "price": 1975.94,
+          "rr_ratio": 5.0,
+          "close_pct": 15,
+          "profit": 282.28
+        },
+        {
+          "level": 5,
+          "price": 1863.03,
+          "rr_ratio": 7.0,
+          "close_pct": 15,
+          "profit": 395.19
+        }
+      ],
+      "leverage": 7,
+      "position": {
+        "size": 1.771307,
+        "value": 4000.0,
+        "risk_amount": 100.0,
+        "risk_pct": 1.0
+      },
+      "liquidation_price": 2569.53,
+      "rr_ratio": 2.5,
+      "risk_pct": 1.0,
+      "atr": 22.58,
+      "atr_pct": 1.0
+    },
+    "timestamp": "2026-05-12T16:47:59.880594+00:00",
+    "status": "active",
+    "tp_hits": []
+  },
+  {
+    "signal": {
+      "symbol": "BTCUSDT",
+      "trade_type": "day_trading",
+      "strength": "SILVER",
+      "rating": {
+        "rank": "SILVER",
+        "emoji": "\ud83e\udd48",
+        "color": "#C0C0C0",
+        "priority": 3
+      },
+      "confidence": 75.0,
+      "tf_label": "TRUNG H\u1ea0N \u23f3",
+      "score": 61,
+      "direction": "short",
+      "entry_price": 79906.5,
+      "atr": 799.065,
+      "atr_pct": 1.0,
+      "leverage_info": {
+        "leverage": 5,
+        "risk_label": "TH\u1ea4P",
+        "detail": "5x (TH\u1ea4P)"
+      },
+      "regime": {
+        "regime": "trending_down",
+        "emoji": "\ud83d\udcc9",
+        "label": "Xu h\u01b0\u1edbng gi\u1ea3m",
+        "adx": 42.9,
+        "volatility": 0.15,
+        "trend_slope": -1.1,
+        "detail": "\ud83d\udcc9 Xu h\u01b0\u1edbng gi\u1ea3m"
+      },
+      "multi_tf_aligned": true,
+      "funding_rate": 5.822e-05,
+      "open_interest": 105071.098,
+      "htf": {
+        "score": 61,
+        "direction": "short",
+        "details": [
+          "Consensus: 64% (4L/7S/1N)",
+          "Aligned score: 61",
+          "Consensus bonus: +0",
+          "Multi-TF bonus: +0",
+          "[+] ema: EMA 9/21 Cross DOWN",
+          "[-] supertrend: Supertrend UP",
+          "[+] adx: ADX:34.2 Strong Bearish",
+          "[+] rsi: RSI:42.7 Bearish",
+          "[+] macd: MACD Histogram Decreasing"
+        ],
+        "regime": {
+          "regime": "trending_down",
+          "emoji": "\ud83d\udcc9",
+          "label": "Xu h\u01b0\u1edbng gi\u1ea3m",
+          "adx": 34.2,
+          "volatility": 0.62,
+          "trend_slope": -0.74,
+          "detail": "\ud83d\udcc9 Xu h\u01b0\u1edbng gi\u1ea3m"
+        }
+      },
+      "mtf": {
+        "score": 43,
+        "direction": "long",
+        "details": [
+          "Consensus: 62% (5L/3S/4N)",
+          "Aligned score: 43",
+          "Consensus bonus: +0",
+          "Multi-TF bonus: +0",
+          "[=] ema: Price < EMA21 & EMA200",
+          "[+] supertrend: Supertrend UP",
+          "[-] adx: ADX:70.8 Strong Bearish",
+          "[+] rsi: RSI:20.3 Oversold | RSI Bullish Divergence",
+          "[-] macd: MACD Histogram Decreasing"
+        ],
+        "regime": {
+          "regime": "trending_down",
+          "emoji": "\ud83d\udcc9",
+          "label": "Xu h\u01b0\u1edbng gi\u1ea3m",
+          "adx": 70.8,
+          "volatility": 0.38,
+          "trend_slope": -2.33,
+          "detail": "\ud83d\udcc9 Xu h\u01b0\u1edbng gi\u1ea3m"
+        }
+      },
+      "ltf": {
+        "score": 56,
+        "direction": "short",
+        "details": [
+          "Consensus: 67% (3L/6S/3N)",
+          "Aligned score: 56",
+          "Consensus bonus: +0",
+          "Multi-TF bonus: +0",
+          "[+] ema: EMA Bearish Alignment | Price < EMA21 & EMA200",
+          "[-] supertrend: Supertrend UP",
+          "[+] adx: ADX:42.9 Strong Bearish",
+          "[+] rsi: RSI:33.9 Bearish",
+          "[+] macd: MACD Histogram Decreasing"
+        ],
+        "regime": {
+          "regime": "trending_down",
+          "emoji": "\ud83d\udcc9",
+          "label": "Xu h\u01b0\u1edbng gi\u1ea3m",
+          "adx": 42.9,
+          "volatility": 0.15,
+          "trend_slope": -1.1,
+          "detail": "\ud83d\udcc9 Xu h\u01b0\u1edbng gi\u1ea3m"
+        },
+        "rsi": 33.91,
+        "adx": 42.93,
+        "stoch": {
+          "k": 7.0,
+          "d": 11.4
+        },
+        "fib": {
+          "levels": {
+            "0.0": 79834.7,
+            "0.236": 80369.0512,
+            "0.382": 80699.6244,
+            "0.5": 80966.79999999999,
+            "0.618": 81233.97559999999,
+            "0.786": 81614.3612,
+            "1.0": 82098.9
+          },
+          "extensions": {
+            "1.272": 82714.76239999999,
+            "1.618": 83498.17559999999,
+            "2.618": 85762.37559999998
+          },
+          "nearest_level": "0.0"
+        },
+        "candlestick": [
+          "THREE_BLACK_CROWS"
+        ],
+        "bb": {
+          "atr": 309.5429,
+          "atr_pct": 0.39,
+          "bb_upper": 81052.5602,
+          "bb_middle": 80524.465,
+          "bb_lower": 79996.3698,
+          "bb_pct": -0.0851
+        },
+        "ema": {
+          "ema_9": 80273.3639,
+          "ema_21": 80458.2129,
+          "ema_50": 80709.945,
+          "ema_200": 80978.8895,
+          "cross_up": "False",
+          "cross_down": "False"
+        },
+        "structure": {
+          "bos_bullish": false,
+          "bos_bearish": false,
+          "choch_bullish": false,
+          "choch_bearish": false,
+          "trend": "neutral",
+          "last_ph": 80968.6,
+          "last_pl": 80964.4
+        },
+        "smc": {
+          "order_blocks": [
+            {
+              "type": "bullish",
+              "high": 80764.4,
+              "low": 80670.0,
+              "index": 469
+            }
+          ],
+          "fvgs": [
+            {
+              "type": "bearish",
+              "top": 80794.3,
+              "bottom": 80764.4,
+              "index": 469
+            },
+            {
+              "type": "bullish",
+              "top": 80765.9,
+              "bottom": 80764.4,
+              "index": 471
+            },
+            {
+              "type": "bearish",
+              "top": 80733.0,
+              "bottom": 80708.8,
+              "index": 474
+            },
+            {
+              "type": "bullish",
+              "top": 80670.0,
+              "bottom": 80619.4,
+              "index": 479
+            },
+            {
+              "type": "bearish",
+              "top": 80819.6,
+              "bottom": 80777.8,
+              "index": 485
+            }
+          ]
+        }
+      },
+      "confluence_score": 8,
+      "consensus_pct": 67,
+      "long_count": 3,
+      "short_count": 6
+    },
+    "risk": {
+      "entry": 79906.5,
+      "sl": 81904.16,
+      "sl_pct": 2.5,
+      "tps": [
+        {
+          "level": 1,
+          "price": 76910.01,
+          "rr_ratio": 1.5,
+          "close_pct": 25,
+          "profit": 2996.49
+        },
+        {
+          "level": 2,
+          "price": 74912.34,
+          "rr_ratio": 2.5,
+          "close_pct": 25,
+          "profit": 4994.16
+        },
+        {
+          "level": 3,
+          "price": 72914.68,
+          "rr_ratio": 3.5,
+          "close_pct": 20,
+          "profit": 6991.82
+        },
+        {
+          "level": 4,
+          "price": 69918.19,
+          "rr_ratio": 5.0,
+          "close_pct": 15,
+          "profit": 9988.31
+        },
+        {
+          "level": 5,
+          "price": 65922.86,
+          "rr_ratio": 7.0,
+          "close_pct": 15,
+          "profit": 13983.64
+        }
+      ],
+      "leverage": 7,
+      "position": {
+        "size": 0.050059,
+        "value": 4000.0,
+        "risk_amount": 100.0,
+        "risk_pct": 1.0
+      },
+      "liquidation_price": 90922.18,
+      "rr_ratio": 2.5,
+      "risk_pct": 1.0,
+      "atr": 799.06,
+      "atr_pct": 1.0
+    },
+    "timestamp": "2026-05-12T16:48:00.611428+00:00",
+    "status": "active",
+    "tp_hits": []
   }
 ]
