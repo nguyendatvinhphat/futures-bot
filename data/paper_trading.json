@@ -3385,6 +3385,30 @@
       "status": "open",
       "pnl": 0.0,
       "tp_hits": []
+    },
+    {
+      "id": 142,
+      "symbol": "ONTUSDT",
+      "direction": "short",
+      "entry_price": 0.0629,
+      "sl": 0.064472,
+      "tps": [
+        0.060541,
+        0.058969,
+        0.057396,
+        0.055037,
+        0.051892
+      ],
+      "leverage": 7,
+      "size": 63593.004769,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "scalping",
+      "score": 71,
+      "opened_at": "2026-05-12T16:59:34.163736",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
     }
   ],
   "history": [],

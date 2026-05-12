@@ -153,6 +153,9 @@ WEB_HOST = "0.0.0.0"
 WEB_PORT = 5000
 WEB_DEBUG = False
 
+# Online dashboard URL (Railway)
+ONLINE_DASHBOARD_URL = "https://futures-bot-production-6494.up.railway.app"
+
 # =============================================================
 # DATABASE
 # =============================================================

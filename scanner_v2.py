@@ -824,7 +824,7 @@ class ScannerV2:
             print(f"Error saving signals: {e}")
 
     def _push_to_dashboard(self, result: Dict):
-        """Push signal toi dashboard qua HTTP API"""
+        """Push signal toi dashboard qua HTTP API (local + online)"""
         try:
             import requests
             # Gui nguyen cau truc {signal: {...}, risk: {...}, ...}
@@ -835,10 +835,22 @@ class ScannerV2:
                 "status": "active",
                 "tp_hits": [],
             }
-            requests.post(
-                f"http://127.0.0.1:{settings.WEB_PORT}/api/add_signal",
-                json=data, timeout=2
-            )
+            # Push to local dashboard
+            try:
+                requests.post(
+                    f"http://127.0.0.1:{settings.WEB_PORT}/api/add_signal",
+                    json=data, timeout=2
+                )
+            except Exception:
+                pass
+            # Push to online dashboard (Railway)
+            try:
+                requests.post(
+                    f"{settings.ONLINE_DASHBOARD_URL}/api/add_signal",
+                    json=data, timeout=5
+                )
+            except Exception:
+                pass
         except Exception:
             pass
 
