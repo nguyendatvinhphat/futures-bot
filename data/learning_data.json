@@ -28638,11 +28638,11 @@
         "ltf_direction": "long"
       },
       "created_at": "2026-05-12T09:55:06.811282",
-      "status": "active",
-      "outcome": null,
-      "closed_at": null,
-      "close_price": null,
-      "pnl_pct": null,
+      "status": "sl_hit",
+      "outcome": "sl_hit",
+      "closed_at": "2026-05-12T16:24:18.009726",
+      "close_price": 0.0151,
+      "pnl_pct": -1.95,
       "tp_hits": []
     },
     {
@@ -53042,13 +53042,265 @@
       "close_price": null,
       "pnl_pct": null,
       "tp_hits": []
+    },
+    {
+      "id": 1235,
+      "symbol": "XLMUSDT",
+      "direction": "short",
+      "trade_type": "scalping",
+      "strength": "GOLD",
+      "score": 79,
+      "confidence": 88.0,
+      "entry_price": 0.16195,
+      "sl": 0.166,
+      "tps": [
+        0.15588,
+        0.15183,
+        0.14778,
+        0.14171,
+        0.13361
+      ],
+      "leverage": 7,
+      "regime": "trending_down",
+      "indicators": {
+        "rsi": "bearish",
+        "adx": "strong",
+        "stochastic": "neutral",
+        "candlestick": "none",
+        "fib_level": "0.382",
+        "bb_position": "middle",
+        "ema_cross": "none",
+        "structure": "none",
+        "regime": "trending_down",
+        "multi_tf_aligned": true,
+        "htf_direction": "short",
+        "mtf_direction": "short",
+        "ltf_direction": "short"
+      },
+      "created_at": "2026-05-12T16:13:14.395127",
+      "status": "active",
+      "outcome": null,
+      "closed_at": null,
+      "close_price": null,
+      "pnl_pct": null,
+      "tp_hits": []
+    },
+    {
+      "id": 1236,
+      "symbol": "ONTUSDT",
+      "direction": "short",
+      "trade_type": "day_trading",
+      "strength": "SILVER",
+      "score": 72,
+      "confidence": 85.0,
+      "entry_price": 0.063,
+      "sl": 0.064575,
+      "tps": [
+        0.060638,
+        0.059063,
+        0.057488,
+        0.055125,
+        0.051975
+      ],
+      "leverage": 7,
+      "regime": "trending_down",
+      "indicators": {
+        "rsi": "bearish",
+        "adx": "strong",
+        "stochastic": "neutral",
+        "candlestick": "DOJI",
+        "fib_level": "0.0",
+        "bb_position": "middle",
+        "ema_cross": "none",
+        "structure": "none",
+        "regime": "trending_down",
+        "multi_tf_aligned": true,
+        "htf_direction": "short",
+        "mtf_direction": "short",
+        "ltf_direction": "short"
+      },
+      "created_at": "2026-05-12T16:13:15.825309",
+      "status": "active",
+      "outcome": null,
+      "closed_at": null,
+      "close_price": null,
+      "pnl_pct": null,
+      "tp_hits": []
+    },
+    {
+      "id": 1237,
+      "symbol": "BTCUSDT",
+      "direction": "short",
+      "trade_type": "scalping",
+      "strength": "SILVER",
+      "score": 66,
+      "confidence": 80.0,
+      "entry_price": 80349.9,
+      "sl": 82358.65,
+      "tps": [
+        77336.78,
+        75328.03,
+        73319.28,
+        70306.16,
+        66288.67
+      ],
+      "leverage": 7,
+      "regime": "trending_down",
+      "indicators": {
+        "rsi": "bullish",
+        "adx": "strong",
+        "stochastic": "neutral",
+        "candlestick": "none",
+        "fib_level": "0.236",
+        "bb_position": "middle",
+        "ema_cross": "none",
+        "structure": "none",
+        "regime": "trending_down",
+        "multi_tf_aligned": true,
+        "htf_direction": "short",
+        "mtf_direction": "short",
+        "ltf_direction": "short"
+      },
+      "created_at": "2026-05-12T16:15:27.150132",
+      "status": "active",
+      "outcome": null,
+      "closed_at": null,
+      "close_price": null,
+      "pnl_pct": null,
+      "tp_hits": []
+    },
+    {
+      "id": 1238,
+      "symbol": "XTZUSDT",
+      "direction": "long",
+      "trade_type": "scalping",
+      "strength": "SILVER",
+      "score": 65,
+      "confidence": 75.0,
+      "entry_price": 0.3837,
+      "sl": 0.37411,
+      "tps": [
+        0.39809,
+        0.40768,
+        0.41727,
+        0.43166,
+        0.45085
+      ],
+      "leverage": 7,
+      "regime": "transitioning",
+      "indicators": {
+        "rsi": "bullish",
+        "adx": "weak",
+        "stochastic": "overbought",
+        "candlestick": "none",
+        "fib_level": "1.0",
+        "bb_position": "above_upper",
+        "ema_cross": "none",
+        "structure": "none",
+        "regime": "transitioning",
+        "multi_tf_aligned": true,
+        "htf_direction": "long",
+        "mtf_direction": "long",
+        "ltf_direction": "long"
+      },
+      "created_at": "2026-05-12T16:17:54.006305",
+      "status": "active",
+      "outcome": null,
+      "closed_at": null,
+      "close_price": null,
+      "pnl_pct": null,
+      "tp_hits": []
+    },
+    {
+      "id": 1239,
+      "symbol": "XMRUSDT",
+      "direction": "short",
+      "trade_type": "scalping",
+      "strength": "SILVER",
+      "score": 70,
+      "confidence": 80.0,
+      "entry_price": 396.68,
+      "sl": 406.6,
+      "tps": [
+        381.8,
+        371.89,
+        361.97,
+        347.1,
+        327.26
+      ],
+      "leverage": 7,
+      "regime": "transitioning",
+      "indicators": {
+        "rsi": "bearish",
+        "adx": "weak",
+        "stochastic": "neutral",
+        "candlestick": "none",
+        "fib_level": "0.0",
+        "bb_position": "middle",
+        "ema_cross": "none",
+        "structure": "bos_bearish",
+        "regime": "transitioning",
+        "multi_tf_aligned": true,
+        "htf_direction": "short",
+        "mtf_direction": "short",
+        "ltf_direction": "short"
+      },
+      "created_at": "2026-05-12T16:19:59.479759",
+      "status": "active",
+      "outcome": null,
+      "closed_at": null,
+      "close_price": null,
+      "pnl_pct": null,
+      "tp_hits": []
+    },
+    {
+      "id": 1240,
+      "symbol": "IOTAUSDT",
+      "direction": "short",
+      "trade_type": "scalping",
+      "strength": "SILVER",
+      "score": 68,
+      "confidence": 80.0,
+      "entry_price": 0.062,
+      "sl": 0.06355,
+      "tps": [
+        0.059675,
+        0.058125,
+        0.056575,
+        0.05425,
+        0.05115
+      ],
+      "leverage": 7,
+      "regime": "transitioning",
+      "indicators": {
+        "rsi": "bearish",
+        "adx": "weak",
+        "stochastic": "neutral",
+        "candlestick": "none",
+        "fib_level": "0.382",
+        "bb_position": "middle",
+        "ema_cross": "down",
+        "structure": "none",
+        "regime": "transitioning",
+        "multi_tf_aligned": true,
+        "htf_direction": "short",
+        "mtf_direction": "short",
+        "ltf_direction": "short"
+      },
+      "created_at": "2026-05-12T16:24:09.978065",
+      "status": "active",
+      "outcome": null,
+      "closed_at": null,
+      "close_price": null,
+      "pnl_pct": null,
+      "tp_hits": []
     }
   ],
   "indicator_stats": {
     "rsi:bullish": {
       "correct": 6,
-      "wrong": 247,
-      "total": 253
+      "wrong": 248,
+      "total": 254
     },
     "adx:strong": {
       "correct": 14,
@@ -53072,18 +53324,18 @@
     },
     "bb_position:middle": {
       "correct": 13,
-      "wrong": 363,
-      "total": 376
+      "wrong": 364,
+      "total": 377
     },
     "ema_cross:none": {
       "correct": 19,
-      "wrong": 402,
-      "total": 421
+      "wrong": 403,
+      "total": 422
     },
     "structure:none": {
       "correct": 6,
-      "wrong": 309,
-      "total": 315
+      "wrong": 310,
+      "total": 316
     },
     "regime:trending_up": {
       "correct": 13,
@@ -53092,23 +53344,23 @@
     },
     "multi_tf_aligned:True": {
       "correct": 19,
-      "wrong": 418,
-      "total": 437
+      "wrong": 419,
+      "total": 438
     },
     "htf_direction:long": {
       "correct": 18,
-      "wrong": 384,
-      "total": 402
+      "wrong": 385,
+      "total": 403
     },
     "mtf_direction:long": {
       "correct": 18,
-      "wrong": 376,
-      "total": 394
+      "wrong": 377,
+      "total": 395
     },
     "ltf_direction:long": {
       "correct": 18,
-      "wrong": 362,
-      "total": 380
+      "wrong": 363,
+      "total": 381
     },
     "rsi:bearish": {
       "correct": 2,
@@ -53152,8 +53404,8 @@
     },
     "candlestick:none": {
       "correct": 8,
-      "wrong": 190,
-      "total": 198
+      "wrong": 191,
+      "total": 199
     },
     "structure:bos_bullish": {
       "correct": 12,
@@ -53167,8 +53419,8 @@
     },
     "stochastic:overbought": {
       "correct": 11,
-      "wrong": 155,
-      "total": 166
+      "wrong": 156,
+      "total": 167
     },
     "candlestick:THREE_WHITE_SOLDIERS": {
       "correct": 4,
@@ -53182,8 +53434,8 @@
     },
     "adx:weak": {
       "correct": 5,
-      "wrong": 65,
-      "total": 70
+      "wrong": 66,
+      "total": 71
     },
     "fib_level:0.382": {
       "correct": 0,
@@ -53192,13 +53444,13 @@
     },
     "regime:transitioning": {
       "correct": 4,
-      "wrong": 54,
-      "total": 58
+      "wrong": 55,
+      "total": 59
     },
     "fib_level:0.5": {
       "correct": 0,
-      "wrong": 32,
-      "total": 32
+      "wrong": 33,
+      "total": 33
     },
     "bb_position:above_upper": {
       "correct": 5,
@@ -53304,8 +53556,8 @@
     },
     "transitioning": {
       "correct": 4,
-      "wrong": 54,
-      "total": 58
+      "wrong": 55,
+      "total": 59
     },
     "sideway": {
       "correct": 1,
@@ -57265,7 +57517,16 @@
       "score": 65,
       "strength": "SILVER",
       "regime": "transitioning"
+    },
+    {
+      "timestamp": "2026-05-12T16:24:18.009902",
+      "outcome": "sl_hit",
+      "is_win": false,
+      "pnl_pct": -1.9480519480519474,
+      "score": 65,
+      "strength": "SILVER",
+      "regime": "transitioning"
     }
   ],
-  "last_updated": "2026-05-12T16:11:45.900360"
+  "last_updated": "2026-05-12T16:24:49.173875"
 }

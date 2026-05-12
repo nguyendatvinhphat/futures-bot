@@ -5,8 +5,6 @@
   },
   "deploy": {
     "numReplicas": 1,
-    "startCommand": "gunicorn --worker-class eventlet -w 1 --bind 0.0.0.0:$PORT dashboard.app:app",
-    "healthcheckPath": "/api/stats",
-    "healthcheckTimeout": 10
+    "startCommand": "gunicorn --worker-class eventlet -w 1 --bind 0.0.0.0:$PORT dashboard.app:app"
   }
 }

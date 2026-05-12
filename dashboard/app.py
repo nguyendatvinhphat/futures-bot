@@ -11,8 +11,11 @@ import time
 # Fix Unicode encoding for Windows console
 if sys.platform == 'win32':
     os.system('chcp 65001 >nul 2>&1')
-    sys.stdout.reconfigure(encoding='utf-8')
-    sys.stderr.reconfigure(encoding='utf-8')
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
 
 from datetime import datetime
 from flask import Flask, render_template, jsonify, request
@@ -20,7 +23,16 @@ from flask_socketio import SocketIO
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from config import settings
+# Default settings (fallback if config import fails)
+WEB_HOST = "0.0.0.0"
+WEB_PORT = 5000
+
+try:
+    from config import settings
+    WEB_HOST = settings.WEB_HOST
+    WEB_PORT = settings.WEB_PORT
+except Exception as e:
+    print(f"[Dashboard] Cannot import config: {e}")
 
 app = Flask(__name__,
             template_folder="templates",
@@ -98,8 +110,6 @@ def load_signals_from_file():
             print(f"[Dashboard] History file not found: {HISTORY_FILE}")
     except Exception as e:
         print(f"[Dashboard] Cannot load signals history: {e}")
-        import traceback
-        traceback.print_exc()
 
 
 def check_outcomes_in_store():
@@ -191,6 +201,7 @@ def auto_refresh_loop():
             pass
 
 
+# Load signals on startup
 load_signals_from_file()
 check_outcomes_in_store()
 
@@ -204,29 +215,9 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/api/signals")
-def get_signals():
-    """API lấy tất cả signals"""
-    limit = request.args.get("limit", 200, type=int)
-    trade_type = request.args.get("type", "all")
-    status_filter = request.args.get("status", "all")
-
-    filtered = signals_store
-    if trade_type != "all":
-        filtered = [s for s in filtered if s.get("trade_type") == trade_type]
-    if status_filter != "all":
-        filtered = [s for s in filtered if s.get("status") == status_filter]
-
-    return jsonify({
-        "signals": filtered[-limit:],
-        "total": len(filtered),
-        "timestamp": datetime.utcnow().isoformat(),
-    })
-
-
 @app.route("/api/stats")
 def get_stats():
-    """API lấy thống kê tổng hợp"""
+    """API lay thong ke tong hop"""
     if not signals_store:
         return jsonify({
             "total": 0, "strong": 0, "medium": 0, "weak": 0,
@@ -246,7 +237,7 @@ def get_stats():
     silver = len([s for s in signals_store if s.get("signal", {}).get("strength") == "SILVER"])
     bronze = len([s for s in signals_store if s.get("signal", {}).get("strength") == "BRONZE"])
 
-    # TP/SL hits từ signals_store
+    # TP/SL hits
     tp1_hits = 0
     tp2_hits = 0
     tp3_hits = 0
@@ -293,29 +284,29 @@ def get_stats():
     })
 
 
-@app.route("/api/learning")
-def get_learning():
-    """API lấy dữ liệu học tập"""
-    try:
-        from signals.learning import signal_learner
-        stats = signal_learner.get_overall_stats()
-        indicator_perf = signal_learner.get_indicator_performance()
-        regime_perf = signal_learner.get_regime_performance()
-        adjustments = signal_learner.calculate_weight_adjustments()
+@app.route("/api/signals")
+def get_signals():
+    """API lay tat ca signals"""
+    limit = request.args.get("limit", 200, type=int)
+    trade_type = request.args.get("type", "all")
+    status_filter = request.args.get("status", "all")
 
-        return jsonify({
-            "overall": stats,
-            "indicators": indicator_perf,
-            "regimes": regime_perf,
-            "adjustments": adjustments,
-        })
-    except Exception as e:
-        return jsonify({"error": str(e)})
+    filtered = signals_store
+    if trade_type != "all":
+        filtered = [s for s in filtered if s.get("signal", {}).get("trade_type") == trade_type]
+    if status_filter != "all":
+        filtered = [s for s in filtered if s.get("status") == status_filter]
+
+    return jsonify({
+        "signals": filtered[-limit:],
+        "total": len(filtered),
+        "timestamp": datetime.utcnow().isoformat(),
+    })
 
 
 @app.route("/api/add_signal", methods=["POST"])
 def add_signal():
-    """API thêm signal mới (từ scanner)"""
+    """API them signal moi (tu scanner)"""
     data = request.json
     if data:
         signals_store.append(data)
@@ -327,9 +318,9 @@ def add_signal():
 
 
 def run_dashboard():
-    """Chạy dashboard server"""
-    port = int(os.environ.get("PORT", settings.WEB_PORT))
-    print(f"Dashboard running at http://{settings.WEB_HOST}:{port}")
+    """Chay dashboard server"""
+    port = int(os.environ.get("PORT", WEB_PORT))
+    print(f"Dashboard running at http://{WEB_HOST}:{port}")
     socketio.run(app, host="0.0.0.0", port=port, debug=False)
 
 

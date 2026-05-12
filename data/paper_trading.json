@@ -2857,6 +2857,78 @@
       "status": "open",
       "pnl": 0.0,
       "tp_hits": []
+    },
+    {
+      "id": 120,
+      "symbol": "XLMUSDT",
+      "direction": "short",
+      "entry_price": 0.16195,
+      "sl": 0.166,
+      "tps": [
+        0.15588,
+        0.15183,
+        0.14778,
+        0.14171,
+        0.13361
+      ],
+      "leverage": 7,
+      "size": 24698.981167,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "scalping",
+      "score": 79,
+      "opened_at": "2026-05-12T16:13:14.620160",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
+    },
+    {
+      "id": 121,
+      "symbol": "ONTUSDT",
+      "direction": "short",
+      "entry_price": 0.063,
+      "sl": 0.064575,
+      "tps": [
+        0.060638,
+        0.059063,
+        0.057488,
+        0.055125,
+        0.051975
+      ],
+      "leverage": 7,
+      "size": 63492.063492,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "day_trading",
+      "score": 72,
+      "opened_at": "2026-05-12T16:13:16.001084",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
+    },
+    {
+      "id": 122,
+      "symbol": "XMRUSDT",
+      "direction": "short",
+      "entry_price": 396.68,
+      "sl": 406.6,
+      "tps": [
+        381.8,
+        371.89,
+        361.97,
+        347.1,
+        327.26
+      ],
+      "leverage": 7,
+      "size": 10.083695,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "scalping",
+      "score": 70,
+      "opened_at": "2026-05-12T16:19:59.652951",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
     }
   ],
   "history": [],
