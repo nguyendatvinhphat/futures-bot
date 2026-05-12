@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confluence Bot 2.1.0 - Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #161b22, #21262d);
+            padding: 15px 25px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            font-size: 20px;
+            background: linear-gradient(90deg, #58a6ff, #3fb950);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .status {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            font-size: 13px;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3fb950;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 15px;
+            padding: 12px 25px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: #21262d;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            min-width: 120px;
+        }
+        .stat-card .label {
+            font-size: 11px;
+            color: #8b949e;
+            text-transform: uppercase;
+        }
+        .stat-card .value {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 3px;
+        }
+        .stat-card .value.green { color: #3fb950; }
+        .stat-card .value.red { color: #f85149; }
+        .stat-card .value.blue { color: #58a6ff; }
+        .stat-card .value.yellow { color: #d29922; }
+        .stat-card .value.purple { color: #bc8cff; }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            padding: 12px 25px;
+            background: #0d1117;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-btn {
+            padding: 6px 16px;
+            border: 1px solid #30363d;
+            background: #21262d;
+            color: #c9d1d9;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #58a6ff;
+            color: #fff;
+            border-color: #58a6ff;
+        }
+        .filter-separator {
+            width: 1px;
+            height: 24px;
+            background: #30363d;
+        }
+
+        .columns-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            padding: 15px 25px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .column {
+            background: #161b22;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-header {
+            padding: 12px 15px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        .column-header.scalping {
+            background: linear-gradient(135deg, rgba(248, 81, 73, 0.15), rgba(248, 81, 73, 0.05));
+            border-bottom: 2px solid #f85149;
+        }
+        .column-header.day-trading {
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.15), rgba(88, 166, 255, 0.05));
+            border-bottom: 2px solid #58a6ff;
+        }
+        .column-header.swing {
+            background: linear-gradient(135deg, rgba(63, 185, 80, 0.15), rgba(63, 185, 80, 0.05));
+            border-bottom: 2px solid #3fb950;
+        }
+
+        .column-title {
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .column-count {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: #21262d;
+            color: #8b949e;
+        }
+
+        .column-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px;
+            max-height: calc(100vh - 300px);
+        }
+
+        .signal-card {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            border: 1px solid #30363d;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .signal-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-1px);
+        }
+        .signal-card.sl-hit {
+            border-left: 3px solid #f85149;
+            opacity: 0.7;
+        }
+        .signal-card.tp-hit {
+            border-left: 3px solid #3fb950;
+        }
+        .signal-card.active {
+            border-left: 3px solid #d29922;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .card-symbol {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .card-time {
+            font-size: 11px;
+            color: #8b949e;
+        }
+
+        .card-middle {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+
+        .direction-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .direction-badge.long { background: rgba(63, 185, 80, 0.2); color: #3fb950; }
+        .direction-badge.short { background: rgba(248, 81, 73, 0.2); color: #f85149; }
+
+        .rating-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .rating-badge.PLATINUM { background: rgba(229, 228, 226, 0.2); color: #E5E4E2; }
+        .rating-badge.GOLD { background: rgba(255, 215, 0, 0.2); color: #FFD700; }
+        .rating-badge.SILVER { background: rgba(192, 192, 192, 0.2); color: #C0C0C0; }
+        .rating-badge.BRONZE { background: rgba(205, 127, 50, 0.2); color: #CD7F32; }
+
+        .score-badge {
+            font-size: 11px;
+            color: #8b949e;
+        }
+
+        .leverage-badge {
+            font-size: 10px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            background: rgba(88, 166, 255, 0.15);
+            color: #58a6ff;
+        }
+
+        .card-prices {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4px;
+            font-size: 11px;
+            margin-bottom: 6px;
+        }
+        .price-item {
+            padding: 3px 6px;
+            background: #161b22;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .price-item .label {
+            color: #8b949e;
+            font-size: 9px;
+            display: block;
+        }
+        .price-item.entry { color: #58a6ff; }
+        .price-item.sl { color: #f85149; }
+        .price-item.tp { color: #3fb950; }
+
+        .card-tps {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+        .tp-chip {
+            flex: 1;
+            padding: 3px 4px;
+            background: #161b22;
+            border-radius: 3px;
+            text-align: center;
+            font-size: 10px;
+            color: #8b949e;
+        }
+        .tp-chip.hit {
+            background: rgba(63, 185, 80, 0.2);
+            color: #3fb950;
+            font-weight: bold;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        .status-badge.waiting { background: rgba(88, 166, 255, 0.15); color: #58a6ff; }
+        .status-badge.active { background: rgba(210, 153, 34, 0.15); color: #d29922; }
+        .status-badge.tp-hit { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+        .status-badge.sl-hit { background: rgba(248, 81, 73, 0.15); color: #f85149; }
+
+        .confluence-mini {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .conf-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #30363d;
+        }
+        .conf-dot.agreed { background: #3fb950; }
+        .conf-pct {
+            font-size: 10px;
+            color: #8b949e;
+            margin-left: 3px;
+        }
+
+        .no-signals-col {
+            text-align: center;
+            padding: 40px 20px;
+            color: #8b949e;
+        }
+        .no-signals-col .icon { font-size: 32px; margin-bottom: 10px; }
+
+        .detail-panel {
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: #161b22;
+            border-left: 1px solid #30363d;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+        .detail-panel.show { display: block; }
+        .detail-panel h3 {
+            margin-bottom: 15px;
+            color: #58a6ff;
+        }
+        .detail-section {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #21262d;
+            border-radius: 8px;
+        }
+        .detail-section h4 {
+            font-size: 12px;
+            color: #8b949e;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 13px;
+        }
+        .detail-row .label { color: #8b949e; }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #8b949e;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .close-btn:hover { color: #f85149; }
+
+        .trend-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+        .trend-badge.up { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+        .trend-badge.down { background: rgba(248, 81, 73, 0.15); color: #f85149; }
+        .trend-badge.sideway { background: rgba(210, 153, 34, 0.15); color: #d29922; }
+
+        @media (max-width: 1200px) {
+            .columns-container {
+                grid-template-columns: 1fr;
+            }
+            .column-body {
+                max-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🤖 Confluence Bot 2.1.0</h1>
+        <div class="status">
+            <div class="status-dot"></div>
+            <span>Live</span>
+            <span id="last-update">--</span>
+            <span>|</span>
+            <span id="signal-count">0 signals</span>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="label">Total Signals</div>
+            <div class="value blue" id="stat-total">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">PLATINUM 💎</div>
+            <div class="value purple" id="stat-platinum">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">GOLD 🥇</div>
+            <div class="value yellow" id="stat-gold">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">LONG 🟢</div>
+            <div class="value green" id="stat-long">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">SHORT 🔴</div>
+            <div class="value red" id="stat-short">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">Win Rate</div>
+            <div class="value green" id="stat-winrate">0%</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">TP/SL Ratio</div>
+            <div class="value blue" id="stat-tpsl-ratio">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">TP Hit</div>
+            <div class="value green" id="stat-tp">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">SL Hit</div>
+            <div class="value red" id="stat-sl">0</div>
+        </div>
+    </div>
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterSignals('all')">All</button>
+        <button class="filter-btn" onclick="filterSignals('long')">🟢 Long</button>
+        <button class="filter-btn" onclick="filterSignals('short')">🔴 Short</button>
+        <div class="filter-separator"></div>
+        <button class="filter-btn" onclick="filterSignals('PLATINUM')">💎 Platinum</button>
+        <button class="filter-btn" onclick="filterSignals('GOLD')">🥇 Gold</button>
+        <button class="filter-btn" onclick="filterSignals('SILVER')">🥈 Silver</button>
+        <div class="filter-separator"></div>
+        <button class="filter-btn" onclick="filterSignals('active')">🔵 Active</button>
+        <button class="filter-btn" onclick="filterSignals('tp_hit')">✅ TP Hit</button>
+        <button class="filter-btn" onclick="filterSignals('sl_hit')">❌ SL Hit</button>
+    </div>
+
+    <div class="columns-container">
+        <!-- SCALPING Column -->
+        <div class="column">
+            <div class="column-header scalping">
+                <div class="column-title">⚡ Scalping</div>
+                <span class="column-count" id="scalping-count">0</span>
+            </div>
+            <div class="column-body" id="scalping-body">
+                <div class="no-signals-col">
+                    <div class="icon">⚡</div>
+                    <p>Chờ tín hiệu...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAY TRADING Column -->
+        <div class="column">
+            <div class="column-header day-trading">
+                <div class="column-title">📊 Day Trading</div>
+                <span class="column-count" id="day-trading-count">0</span>
+            </div>
+            <div class="column-body" id="day-trading-body">
+                <div class="no-signals-col">
+                    <div class="icon">📊</div>
+                    <p>Chờ tín hiệu...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SWING Column -->
+        <div class="column">
+            <div class="column-header swing">
+                <div class="column-title">📈 Swing Trading</div>
+                <span class="column-count" id="swing-count">0</span>
+            </div>
+            <div class="column-body" id="swing-body">
+                <div class="no-signals-col">
+                    <div class="icon">📈</div>
+                    <p>Chờ tín hiệu...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="detail-panel" id="detail-panel">
+        <button class="close-btn" onclick="closeDetail()">×</button>
+        <h3 id="detail-title">Signal Details</h3>
+        <div id="detail-content"></div>
+    </div>
+
+    <script>
+        let signals = [];
+        let currentFilter = 'all';
+
+        async function fetchSignals() {
+            try {
+                const resp = await fetch('/api/signals?limit=200');
+                const data = await resp.json();
+                signals = data.signals || [];
+                renderAllColumns();
+                updateStats();
+                document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+                document.getElementById('signal-count').textContent = signals.length + ' signals';
+            } catch (e) {
+                console.error('Error:', e);
+            }
+        }
+
+        async function updateStats() {
+            try {
+                const resp = await fetch('/api/stats');
+                const data = await resp.json();
+                document.getElementById('stat-total').textContent = data.total || 0;
+                document.getElementById('stat-platinum').textContent = data.platinum || 0;
+                document.getElementById('stat-gold').textContent = data.gold || 0;
+                document.getElementById('stat-long').textContent = data.long_count || 0;
+                document.getElementById('stat-short').textContent = data.short_count || 0;
+                document.getElementById('stat-winrate').textContent = (data.win_rate || 0) + '%';
+                document.getElementById('stat-tpsl-ratio').textContent = data.tp_sl_ratio || 0;
+                document.getElementById('stat-tp').textContent = (data.tp1_hits || 0) + (data.tp2_hits || 0) + (data.tp3_hits || 0);
+                document.getElementById('stat-sl').textContent = data.sl_hits || 0;
+            } catch (e) {
+                console.error('Error fetching stats:', e);
+            }
+        }
+
+        function filterSignals(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            renderAllColumns();
+        }
+
+        function applyFilter(list) {
+            let filtered = [...list];
+            if (currentFilter === 'long') filtered = filtered.filter(s => (s.signal || s).direction === 'long');
+            else if (currentFilter === 'short') filtered = filtered.filter(s => (s.signal || s).direction === 'short');
+            else if (currentFilter === 'PLATINUM') filtered = filtered.filter(s => (s.signal || s).strength === 'PLATINUM');
+            else if (currentFilter === 'GOLD') filtered = filtered.filter(s => (s.signal || s).strength === 'GOLD');
+            else if (currentFilter === 'SILVER') filtered = filtered.filter(s => (s.signal || s).strength === 'SILVER');
+            else if (currentFilter === 'active') filtered = filtered.filter(s => (s.status || 'active') === 'active');
+            else if (currentFilter === 'tp_hit') filtered = filtered.filter(s => s.status && s.status.includes('tp'));
+            else if (currentFilter === 'sl_hit') filtered = filtered.filter(s => s.status === 'sl_hit');
+            return filtered;
+        }
+
+        function renderAllColumns() {
+            const scalping = applyFilter(signals.filter(s => (s.signal || s).trade_type === 'scalping'));
+            const dayTrading = applyFilter(signals.filter(s => (s.signal || s).trade_type === 'day_trading'));
+            const swing = applyFilter(signals.filter(s => (s.signal || s).trade_type === 'swing_trading'));
+
+            renderColumn('scalping-body', scalping, 'scalping-count');
+            renderColumn('day-trading-body', dayTrading, 'day-trading-count');
+            renderColumn('swing-body', swing, 'swing-count');
+        }
+
+        function renderColumn(bodyId, list, countId) {
+            const body = document.getElementById(bodyId);
+            document.getElementById(countId).textContent = list.length;
+
+            if (list.length === 0) {
+                const icons = { 'scalping-body': '⚡', 'day-trading-body': '📊', 'swing-body': '📈' };
+                body.innerHTML = `<div class="no-signals-col"><div class="icon">${icons[bodyId] || '📡'}</div><p>Chờ tín hiệu...</p></div>`;
+                return;
+            }
+
+            body.innerHTML = list.reverse().map((s, idx) => {
+                const sig = s.signal || s;
+                const risk = s.risk || {};
+                const dir = sig.direction || 'neutral';
+                const dirClass = dir === 'long' ? 'long' : 'short';
+                const dirText = dir === 'long' ? 'LONG' : 'SHORT';
+                const dirEmoji = dir === 'long' ? '🟢' : '🔴';
+
+                const rating = sig.rating || {};
+                const rank = rating.rank || sig.strength || 'WEAK';
+                const rankEmoji = rating.emoji || '⚠️';
+
+                const entry = risk.entry || sig.entry_price || 0;
+                const sl = risk.sl || 0;
+                const tps = risk.tps || [];
+                const tpHits = s.tp_hits || sig.tp_hits || [];
+
+                const leverage = sig.leverage_info?.leverage || risk.leverage || 0;
+                const score = sig.score || 0;
+
+                const longCount = sig.long_count || 0;
+                const shortCount = sig.short_count || 0;
+                const consensusPct = sig.consensus_pct || 0;
+                const totalInd = longCount + shortCount;
+                const agreedCount = dir === 'long' ? longCount : shortCount;
+
+                const regime = sig.regime || {};
+                const trendDir = regime.regime || 'unknown';
+                const trendClass = trendDir.includes('up') ? 'up' : trendDir.includes('down') ? 'down' : 'sideway';
+                const regimeEmoji = regime.emoji || '➡️';
+
+                const status = sig.status || s.status || 'waiting';
+                let statusBadge = '';
+                if (status === 'sl_hit') {
+                    statusBadge = '<span class="status-badge sl-hit">❌ SL</span>';
+                } else if (tpHits.length >= 3) {
+                    statusBadge = '<span class="status-badge tp-hit">✅ TP3</span>';
+                } else if (tpHits.length >= 2) {
+                    statusBadge = '<span class="status-badge tp-hit">✅ TP2</span>';
+                } else if (tpHits.length >= 1) {
+                    statusBadge = '<span class="status-badge tp-hit">✅ TP1</span>';
+                } else if (status === 'active') {
+                    statusBadge = '<span class="status-badge active">🔵 Active</span>';
+                } else {
+                    statusBadge = '<span class="status-badge waiting">⏳ Wait</span>';
+                }
+
+                const cardClass = status === 'sl_hit' ? 'sl-hit' : tpHits.length > 0 ? 'tp-hit' : 'active';
+
+                const confDots = [];
+                for (let i = 0; i < Math.min(totalInd, 8); i++) {
+                    confDots.push(`<div class="conf-dot ${i < agreedCount ? 'agreed' : ''}"></div>`);
+                }
+
+                const tpChips = tps.slice(0, 5).map((tp, i) => {
+                    const hit = tpHits.includes(i);
+                    return `<div class="tp-chip ${hit ? 'hit' : ''}">${formatNum(tp.price)}</div>`;
+                }).join('');
+
+                return `
+                    <div class="signal-card ${cardClass}" onclick='showDetail(${JSON.stringify(s).replace(/'/g, "\\'")})'>
+                        <div class="card-top">
+                            <span class="card-symbol">${sig.symbol}</span>
+                            <span class="card-time">${formatTime(s.timestamp)}</span>
+                        </div>
+                        <div class="card-middle">
+                            <span class="direction-badge ${dirClass}">${dirEmoji} ${dirText}</span>
+                            <span class="rating-badge ${rank}">${rankEmoji} ${rank}</span>
+                            <span class="score-badge">Score: ${score}</span>
+                            <span class="leverage-badge">${leverage}x</span>
+                            <span class="trend-badge ${trendClass}">${regimeEmoji}</span>
+                        </div>
+                        <div class="card-prices">
+                            <div class="price-item entry"><span class="label">Entry</span>$${formatNum(entry)}</div>
+                            <div class="price-item sl"><span class="label">SL</span>$${formatNum(sl)}</div>
+                            <div class="price-item tp"><span class="label">R:R</span>1:${risk.rr_ratio || 0}</div>
+                        </div>
+                        <div class="card-tps">${tpChips}</div>
+                        <div class="card-bottom">
+                            ${statusBadge}
+                            <div class="confluence-mini">
+                                ${confDots.join('')}
+                                <span class="conf-pct">${consensusPct}%</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function showDetail(s) {
+            const panel = document.getElementById('detail-panel');
+            const title = document.getElementById('detail-title');
+            const content = document.getElementById('detail-content');
+
+            const sig = s.signal || s;
+            const risk = s.risk || {};
+
+            title.textContent = `${sig.symbol} - ${sig.direction?.toUpperCase()}`;
+
+            const tps = risk.tps || [];
+            const ltf = sig.ltf || {};
+            const htf = sig.htf || {};
+            const mtf = sig.mtf || {};
+
+            content.innerHTML = `
+                <div class="detail-section">
+                    <h4>📊 Signal Info</h4>
+                    <div class="detail-row"><span class="label">Rating</span><span>${sig.rating?.emoji || ''} ${sig.strength}</span></div>
+                    <div class="detail-row"><span class="label">Score</span><span>${sig.score}/100</span></div>
+                    <div class="detail-row"><span class="label">Confidence</span><span>${sig.confidence}%</span></div>
+                    <div class="detail-row"><span class="label">Timeframe</span><span>${sig.tf_label || sig.trade_type}</span></div>
+                    <div class="detail-row"><span class="label">Direction</span><span>${sig.direction?.toUpperCase()}</span></div>
+                </div>
+                <div class="detail-section">
+                    <h4>💰 Prices</h4>
+                    <div class="detail-row"><span class="label">Entry</span><span style="color:#58a6ff">$${formatNum(risk.entry || sig.entry_price)}</span></div>
+                    <div class="detail-row"><span class="label">Stop Loss</span><span style="color:#f85149">$${formatNum(risk.sl)} (${risk.sl_pct}%)</span></div>
+                    ${tps.map(tp => `<div class="detail-row"><span class="label">TP${tp.level}</span><span style="color:#3fb950">$${formatNum(tp.price)} (1:${tp.rr_ratio})</span></div>`).join('')}
+                    <div class="detail-row"><span class="label">R:R Ratio</span><span>1:${risk.rr_ratio}</span></div>
+                    <div class="detail-row"><span class="label">Liquidation</span><span>$${formatNum(risk.liquidation_price)}</span></div>
+                </div>
+                <div class="detail-section">
+                    <h4>📈 Indicators (LTF)</h4>
+                    <div class="detail-row"><span class="label">RSI</span><span>${ltf.rsi?.toFixed(1) || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="label">ADX</span><span>${ltf.adx?.toFixed(1) || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="label">Stoch %K</span><span>${ltf.stoch?.k?.toFixed(1) || 'N/A'}%</span></div>
+                    <div class="detail-row"><span class="label">Fib Level</span><span>${ltf.fib?.nearest_level || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="label">Candle</span><span>${ltf.candlestick?.join(', ') || 'None'}</span></div>
+                </div>
+                <div class="detail-section">
+                    <h4>🔄 Multi-Timeframe</h4>
+                    <div class="detail-row"><span class="label">HTF</span><span>${htf.score}/100 ${htf.direction?.toUpperCase()}</span></div>
+                    <div class="detail-row"><span class="label">MTF</span><span>${mtf.score}/100 ${mtf.direction?.toUpperCase()}</span></div>
+                    <div class="detail-row"><span class="label">LTF</span><span>${ltf.score}/100 ${ltf.direction?.toUpperCase()}</span></div>
+                </div>
+                <div class="detail-section">
+                    <h4>⚙️ Risk Management</h4>
+                    <div class="detail-row"><span class="label">Leverage</span><span>${risk.leverage}x</span></div>
+                    <div class="detail-row"><span class="label">Risk %</span><span>${risk.risk_pct}%</span></div>
+                    <div class="detail-row"><span class="label">ATR</span><span>$${formatNum(risk.atr)} (${risk.atr_pct}%)</span></div>
+                </div>
+                <div class="detail-section">
+                    <h4>📊 Market</h4>
+                    <div class="detail-row"><span class="label">Regime</span><span>${sig.regime?.emoji || ''} ${sig.regime?.label || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="label">Funding</span><span>${sig.funding_rate ? (sig.funding_rate * 100).toFixed(3) + '%' : 'N/A'}</span></div>
+                </div>
+            `;
+            panel.classList.add('show');
+        }
+
+        function closeDetail() {
+            document.getElementById('detail-panel').classList.remove('show');
+        }
+
+        function formatNum(n) {
+            if (!n || isNaN(n)) return '0';
+            return Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 4 });
+        }
+
+        function formatTime(ts) {
+            if (!ts) return '--';
+            const d = new Date(ts);
+            return d.toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' });
+        }
+
+        fetchSignals();
+        setInterval(fetchSignals, 30000);
+    </script>
+</body>
+</html>
