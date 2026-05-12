@@ -3409,6 +3409,30 @@
       "status": "open",
       "pnl": 0.0,
       "tp_hits": []
+    },
+    {
+      "id": 143,
+      "symbol": "ATOMUSDT",
+      "direction": "long",
+      "entry_price": 2.042,
+      "sl": 1.9909,
+      "tps": [
+        2.1186,
+        2.1696,
+        2.2207,
+        2.2972,
+        2.3994
+      ],
+      "leverage": 7,
+      "size": 1958.863859,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "day_trading",
+      "score": 71,
+      "opened_at": "2026-05-12T17:06:08.181786",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
     }
   ],
   "history": [],
