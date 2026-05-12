@@ -215,6 +215,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/health")
+def health():
+    return jsonify({"status": "ok"})
+
+
 @app.route("/api/stats")
 def get_stats():
     """API lay thong ke tong hop"""

@@ -2929,6 +2929,30 @@
       "status": "open",
       "pnl": 0.0,
       "tp_hits": []
+    },
+    {
+      "id": 123,
+      "symbol": "BCHUSDT",
+      "direction": "short",
+      "entry_price": 439.41,
+      "sl": 450.4,
+      "tps": [
+        422.93,
+        411.95,
+        400.96,
+        384.48,
+        362.51
+      ],
+      "leverage": 5,
+      "size": 9.103116,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "day_trading",
+      "score": 71,
+      "opened_at": "2026-05-12T16:30:33.973469",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
     }
   ],
   "history": [],
