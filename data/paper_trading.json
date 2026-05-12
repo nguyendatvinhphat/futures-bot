@@ -3025,6 +3025,78 @@
       "status": "open",
       "pnl": 0.0,
       "tp_hits": []
+    },
+    {
+      "id": 127,
+      "symbol": "BCHUSDT",
+      "direction": "short",
+      "entry_price": 439.16,
+      "sl": 450.14,
+      "tps": [
+        422.69,
+        411.71,
+        400.73,
+        384.27,
+        362.31
+      ],
+      "leverage": 10,
+      "size": 13.662446,
+      "value": 6000.0,
+      "risk_amount": 150.0,
+      "trade_type": "scalping",
+      "score": 80,
+      "opened_at": "2026-05-12T16:39:20.801804",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
+    },
+    {
+      "id": 128,
+      "symbol": "XLMUSDT",
+      "direction": "short",
+      "entry_price": 0.16227,
+      "sl": 0.16633,
+      "tps": [
+        0.15618,
+        0.15213,
+        0.14807,
+        0.14199,
+        0.13387
+      ],
+      "leverage": 7,
+      "size": 24650.274234,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "scalping",
+      "score": 71,
+      "opened_at": "2026-05-12T16:39:22.049819",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
+    },
+    {
+      "id": 129,
+      "symbol": "TRXUSDT",
+      "direction": "short",
+      "entry_price": 0.34766,
+      "sl": 0.35635,
+      "tps": [
+        0.33462,
+        0.32593,
+        0.31724,
+        0.3042,
+        0.28682
+      ],
+      "leverage": 7,
+      "size": 11505.493873,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "scalping",
+      "score": 77,
+      "opened_at": "2026-05-12T16:41:37.712812",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
     }
   ],
   "history": [],
