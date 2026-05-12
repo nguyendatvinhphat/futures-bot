@@ -2953,6 +2953,78 @@
       "status": "open",
       "pnl": 0.0,
       "tp_hits": []
+    },
+    {
+      "id": 124,
+      "symbol": "BTCUSDT",
+      "direction": "short",
+      "entry_price": 80227.1,
+      "sl": 82232.78,
+      "tps": [
+        77218.58,
+        75212.91,
+        73207.23,
+        70198.71,
+        66187.36
+      ],
+      "leverage": 7,
+      "size": 0.049858,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "scalping",
+      "score": 76,
+      "opened_at": "2026-05-12T16:34:57.756536",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
+    },
+    {
+      "id": 125,
+      "symbol": "ETCUSDT",
+      "direction": "short",
+      "entry_price": 9.289,
+      "sl": 9.5212,
+      "tps": [
+        8.9407,
+        8.7084,
+        8.4762,
+        8.1279,
+        7.6634
+      ],
+      "leverage": 7,
+      "size": 430.616859,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "scalping",
+      "score": 74,
+      "opened_at": "2026-05-12T16:34:58.980873",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
+    },
+    {
+      "id": 126,
+      "symbol": "ATOMUSDT",
+      "direction": "long",
+      "entry_price": 2.017,
+      "sl": 1.9666,
+      "tps": [
+        2.0926,
+        2.1431,
+        2.1935,
+        2.2691,
+        2.37
+      ],
+      "leverage": 7,
+      "size": 1983.143282,
+      "value": 4000.0,
+      "risk_amount": 100.0,
+      "trade_type": "scalping",
+      "score": 70,
+      "opened_at": "2026-05-12T16:35:00.197608",
+      "status": "open",
+      "pnl": 0.0,
+      "tp_hits": []
     }
   ],
   "history": [],
